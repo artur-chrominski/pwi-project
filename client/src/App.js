@@ -1,22 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [inputValue, setInputValue] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleAddData = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5200/add-data", { data: inputValue });
+      setMessage(response.data);
+      setInputValue("");
+    } catch (error) {
+      setMessage("Error adding data: " + error.message);
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form onSubmit={handleAddData}>
+          <input 
+            type="text" 
+            value={inputValue} 
+            onChange={(e) => setInputValue(e.target.value)} 
+            placeholder="Enter some text" 
+          />
+          <button type="submit">Add Data</button>
+        </form>
+        <p>{message}</p>
       </header>
     </div>
   );
