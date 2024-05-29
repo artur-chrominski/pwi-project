@@ -8,7 +8,7 @@ function App() {
   const handleAddData = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5200/add-data", { data: inputValue });
+      const response = await axios.post("https://pwi-project-server.vercel.app//add-data", { data: inputValue });
       setMessage(response.data);
       setInputValue("");
     } catch (error) {
