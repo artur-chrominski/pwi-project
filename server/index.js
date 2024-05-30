@@ -8,7 +8,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'https://pwi-project-client.vercel.app', // adres aplikacji React
+  origin: 'https://pwi-project-client.vercel.app',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 
 console.log("Ładowanie zmiennych środowiskowych...");
 console.log("Project ID: ", process.env.GOOGLE_CLOUD_PROJECT_ID);
-console.log("Private Key: ", process.env.GOOGLE_CLOUD_PRIVATE_KEY ? "Loaded" : "Not Loaded");
+console.log("Private Key Loaded: ", process.env.GOOGLE_CLOUD_PRIVATE_KEY ? "Yes" : "No");
 console.log("Client Email: ", process.env.GOOGLE_CLOUD_CLIENT_EMAIL);
 
 try {
@@ -47,7 +47,6 @@ app.post("/add-data", async (req, res) => {
     const { firstName, lastName, email, text } = req.body;
     console.log("Received data: ", req.body);
 
-    // Sprawdź, czy wszystkie pola są obecne
     if (!firstName || !lastName || !email || !text) {
       return res.status(400).send("All fields are required.");
     }
