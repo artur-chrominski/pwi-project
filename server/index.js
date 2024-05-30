@@ -28,7 +28,8 @@ console.log("Client Email: ", process.env.GOOGLE_CLOUD_CLIENT_EMAIL);
 
 try {
   const privateKey = process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n');
-  console.log("Private Key (first 50 chars): ", privateKey.substring(0, 50)); // Dodaj logowanie klucza prywatnego
+  console.log("Private Key Length: ", privateKey.length);
+  console.log("Private Key (first 50 chars): ", privateKey.substring(0, 50));
 
   admin.initializeApp({
     credential: admin.credential.cert({
