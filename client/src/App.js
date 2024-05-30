@@ -2,67 +2,90 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [inputValue, setInputValue] = useState({ name: '', email: '', comment: '' });
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
   const [message, setMessage] = useState("");
-  const [comments, setComments] = useState([]);
+  const [data, setData] = useState([]);
 
-  const handleAddComment = async (e) => {
+  const handleAddData = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://pwi-project-server.vercel.app/api/add-comment", inputValue);
+      const response = await axios.post("https://pwi-project-server.vercel.app/add-data", {
+        firstName,
+        lastName,
+        email,
+        text
+      });
       setMessage(response.data);
-      setInputValue({ name: '', email: '', comment: '' });
-      fetchComments();
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setText("");
+      fetchData(); // Pobierz dane po dodaniu nowego wpisu
     } catch (error) {
-      setMessage("Error adding comment: " + error.message);
+      console.error("Error adding data: ", error);
+      setMessage("Error adding data: " + error.message);
     }
   };
 
-  const fetchComments = async () => {
+  const fetchData = async () => {
     try {
-      const response = await axios.get("https://pwi-project-server.vercel.app/api/comments");
-      setComments(response.data);
+      const response = await axios.get("https://pwi-project-server.vercel.app/get-data");
+      console.log("Fetched data: ", response.data); // Dodano logowanie
+      setData(response.data);
     } catch (error) {
-      console.error("Error fetching comments:", error);
+      console.error("Error fetching data: ", error);
     }
   };
 
   useEffect(() => {
-    fetchComments();
+    fetchData();
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <form onSubmit={handleAddComment}>
+        <form onSubmit={handleAddData}>
           <input 
             type="text" 
-            value={inputValue.name} 
-            onChange={(e) => setInputValue({ ...inputValue, name: e.target.value })} 
-            placeholder="Enter your name" 
+            value={firstName} 
+            onChange={(e) => setFirstName(e.target.value)} 
+            placeholder="First Name" 
+          />
+          <input 
+            type="text" 
+            value={lastName} 
+            onChange={(e) => setLastName(e.target.value)} 
+            placeholder="Last Name" 
           />
           <input 
             type="email" 
-            value={inputValue.email} 
-            onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })} 
-            placeholder="Enter your email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            placeholder="Email" 
           />
-          <textarea
-            value={inputValue.comment} 
-            onChange={(e) => setInputValue({ ...inputValue, comment: e.target.value })} 
-            placeholder="Enter your comment"
+          <textarea 
+            value={text} 
+            onChange={(e) => setText(e.target.value)} 
+            placeholder="Enter some text" 
           />
-          <button type="submit">Add Comment</button>
+          <button type="submit">Add Data</button>
         </form>
         <p>{message}</p>
-        <ul>
-          {comments.map((item) => (
-            <li key={item.id}>
-              <p><strong>{item.name}</strong> ({item.email})</p>
-              <p>{item.comment}</p>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h2>Data from Firestore:</h2>
+          <ul>
+            {data.map(item => (
+              <li key={item.id}>
+                <p><strong>Name:</strong> {item.firstName} {item.lastName}</p>
+                <p><strong>Email:</strong> {item.email}</p>
+                <p><strong>Text:</strong> {item.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </header>
     </div>
   );

@@ -7,10 +7,11 @@ exports.addComment = async (req, res) => {
       name,
       email,
       comment,
-      createdAt: admin.firestore.FieldValue.serverTimestamp()
+      createdAt: new Date().toISOString() // Zamień na admin.firestore.FieldValue.serverTimestamp() jeśli to działało wcześniej
     });
     res.status(200).send(`Comment added with ID: ${docRef.id}`);
   } catch (error) {
+    console.error("Error adding comment:", error);
     res.status(500).send("Error adding comment: " + error);
   }
 };
@@ -24,6 +25,7 @@ exports.getComments = async (req, res) => {
     }));
     res.status(200).json(comments);
   } catch (error) {
+    console.error("Error getting comments:", error);
     res.status(500).send("Error getting comments: " + error);
   }
 };
