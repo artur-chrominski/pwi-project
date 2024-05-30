@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 
 console.log("Ładowanie zmiennych środowiskowych...");
 console.log("Project ID: ", process.env.GOOGLE_CLOUD_PROJECT_ID);
+console.log("Private Key: ", process.env.GOOGLE_CLOUD_PRIVATE_KEY ? "Loaded" : "Not Loaded");
 console.log("Client Email: ", process.env.GOOGLE_CLOUD_CLIENT_EMAIL);
 
 try {
@@ -78,7 +79,6 @@ app.get("/get-data", async (req, res) => {
   }
 });
 
-// Konfiguracja portu, która zostanie zignorowana przez Vercel
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
