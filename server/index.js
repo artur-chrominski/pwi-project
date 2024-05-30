@@ -27,10 +27,13 @@ console.log("Private Key Loaded: ", process.env.GOOGLE_CLOUD_PRIVATE_KEY ? "Yes"
 console.log("Client Email: ", process.env.GOOGLE_CLOUD_CLIENT_EMAIL);
 
 try {
+  const privateKey = process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n');
+  console.log("Private Key (first 50 chars): ", privateKey.substring(0, 50)); // Dodaj logowanie klucza prywatnego
+
   admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
-      privateKey: process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      privateKey,
       clientEmail: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
     }),
     databaseURL: "https://pwi-project-23da7.firebaseio.com"
@@ -38,6 +41,7 @@ try {
   console.log("Firebase initialized successfully");
 } catch (error) {
   console.error("Error initializing Firebase: ", error);
+  process.exit(1); // Wyjdź z procesu, jeśli inicjalizacja Firebase się nie powiedzie
 }
 
 const db = admin.firestore();
