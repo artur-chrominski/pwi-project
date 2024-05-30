@@ -13,6 +13,14 @@ app.use(cors({
   allowedHeaders: ['Content-Type']
 }));
 
+// Dodatkowe nagłówki CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://pwi-project-client.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 console.log("Ładowanie zmiennych środowiskowych...");
 console.log("Project ID: ", process.env.GOOGLE_CLOUD_PROJECT_ID);
 console.log("Client Email: ", process.env.GOOGLE_CLOUD_CLIENT_EMAIL);
@@ -70,6 +78,7 @@ app.get("/get-data", async (req, res) => {
   }
 });
 
+// Konfiguracja portu, która zostanie zignorowana przez Vercel
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
