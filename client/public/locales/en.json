@@ -1,0 +1,12 @@
+{
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact",
+  "lorem": "Lorem",
+  "hero": {
+    "name": "Artur",
+    "surname": "Chromiński",
+    "job_title": "Fullstack Developer.",
+    "description": "I am a 6th-year Computer Science student at Warsaw University of Life Sciences (SGGW). I have experience in web development and am proficient in technologies such as HTML, CSS, JavaScript, React, Node.js, and Python. I enjoy creating dynamic and responsive web applications."
+  }
+}

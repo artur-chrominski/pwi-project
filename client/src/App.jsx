@@ -1,5 +1,6 @@
 import styles from "./style";
 import { Footer, Navbar, Hero } from "./components";
+import '../src/assets/i18n'; 
 
 const App = () => (
   <div className="bg-primary w-full overflow-hidden">

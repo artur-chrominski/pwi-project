@@ -1,0 +1,12 @@
+{
+  "home": "Strona główna",
+  "about": "O nas",
+  "contact": "Kontakt",
+  "lorem": "Lorem",
+  "hero": {
+    "name": "Artur",
+    "surname": "Chromiński",
+    "job_title": "Fullstack Developer.",
+    "description": "Jestem studentem 6. roku Informatyki na SGGW. Mam doświadczenie w tworzeniu stron internetowych i znam technologie takie jak HTML, CSS, JavaScript, React, Node.js oraz Python. Lubię tworzyć dynamiczne i responsywne aplikacje internetowe."
+  }
+}

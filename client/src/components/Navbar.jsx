@@ -1,11 +1,17 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
+  const { t, i18n } = useTranslation();
+  const [active, setActive] = useState("home");
   const [toggle, setToggle] = useState(false);
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
@@ -20,10 +26,15 @@ const Navbar = () => {
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
           >
-            <a href={`#${nav.id}`}>{nav.title}</a>
+            <a href={`#${nav.id}`}>{t(nav.title)}</a>
           </li>
         ))}
       </ul>
+
+      <div className="sm:flex flex-1 justify-end items-center text-white">
+        <button onClick={() => changeLanguage('en')}>EN</button>
+        <button onClick={() => changeLanguage('pl')}>PL</button>
+      </div>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
@@ -47,7 +58,7 @@ const Navbar = () => {
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >
-                <a href={`#${nav.id}`}>{nav.title}</a>
+                <a href={`#${nav.id}`}>{t(nav.title)}</a>
               </li>
             ))}
           </ul>
