@@ -1,6 +1,8 @@
+import React from 'react';
+import AddReview from './components/AddReview';
 import styles from "./style";
-import { Footer, Navbar, Hero } from "./components";
 import '../src/assets/i18n'; 
+import { Footer, Navbar, Hero } from "./components";
 
 const App = () => (
   <div className="bg-primary w-full overflow-hidden">
@@ -18,6 +20,7 @@ const App = () => (
     
     <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
+        <AddReview />
         <Footer />
       </div>
     </div>
