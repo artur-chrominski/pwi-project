@@ -3,12 +3,18 @@ const cors = require('cors');
 const admin = require('firebase-admin');
 require('dotenv').config();
 
+// Logowanie zmiennych środowiskowych (bez kluczy prywatnych)
+console.log('FIREBASE_PROJECT_ID:', process.env.FIREBASE_PROJECT_ID);
+console.log('FIREBASE_CLIENT_EMAIL:', process.env.FIREBASE_CLIENT_EMAIL);
+
 const app = express();
 
+// Middleware CORS
 app.use(cors({
-  origin: 'https://pwi-project-client.vercel.app',
+  origin: 'https://pwi-project-client.vercel.app', // Domena twojego frontendu
 }));
 
+// Middleware do parsowania JSON
 app.use(express.json());
 
 const serviceAccount = {
@@ -31,6 +37,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+// Przykładowa trasa API
 app.get('/api/reviews', async (req, res) => {
   try {
     const reviews = await db.collection('reviews').get();
@@ -41,6 +48,7 @@ app.get('/api/reviews', async (req, res) => {
   }
 });
 
+// Trasa do obsługi POST
 app.post('/api/reviews', async (req, res) => {
   const { name, email, message } = req.body;
   try {
