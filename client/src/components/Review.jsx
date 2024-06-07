@@ -24,6 +24,10 @@ const Review = () => {
         }
     };
 
+    useEffect(() => {
+        fetchReviews();
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -39,17 +43,20 @@ const Review = () => {
                 throw new Error('Network response was not ok');
             }
 
+            const newReview = await response.json();
+
             setName('');
             setEmail('');
             setMessage('');
             setSuccessMessage(t('Review.review_added_successfully'));
 
-            fetchReviews();
+            // Dodaj nową recenzję do stanu bez potrzeby ponownego ładowania wszystkich recenzji
+            setReviews([...reviews, newReview]);
+
         } catch (error) {
             console.error('Fetch error:', error);
         }
     };
-
 
     return (
         <section id="reviews" className={`flex flex-col ${styles.paddingY}`}>
@@ -125,7 +132,6 @@ const Review = () => {
                 </div>
             </div>
         </section>
-
     );
 };
 
