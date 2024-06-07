@@ -5,8 +5,10 @@ require('dotenv').config();
 
 const app = express();
 
-// Use the cors middleware
-app.use(cors());
+// Konfiguracja CORS
+app.use(cors({
+  origin: 'https://pwi-project-client.vercel.app', 
+}));
 
 const serviceAccount = {
   type: "service_account",
@@ -28,6 +30,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+// Przykładowa trasa API
 app.get('/api/reviews', async (req, res) => {
   try {
     const reviews = await db.collection('reviews').get();
@@ -38,7 +41,7 @@ app.get('/api/reviews', async (req, res) => {
   }
 });
 
-// Start the server
+// Uruchom serwer
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
