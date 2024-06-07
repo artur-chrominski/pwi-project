@@ -12,7 +12,7 @@ const Review = () => {
     const [successMessage, setSuccessMessage] = useState('');
 
     const fetchReviews = async () => {
-        const response = await fetch(`http://pwi-project-client.vercel.app/api/reviews`);
+        const response = await fetch(`https://pwi-project-client.vercel.app/api/reviews`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -26,7 +26,7 @@ const Review = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://pwi-project-client.vercel.app/api/reviews`, {
+        const response = await fetch(`https://pwi-project-client.vercel.app/api/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
