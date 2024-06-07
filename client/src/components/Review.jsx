@@ -13,7 +13,7 @@ const Review = () => {
 
     const fetchReviews = async () => {
         try {
-            const response = await fetch('https://pwi-project-server.vercel.app/api/reviews');
+            const response = await fetch('https://cors-anywhere.herokuapp.com/https://pwi-project-server.vercel.app/api/reviews');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -24,10 +24,14 @@ const Review = () => {
         }
     };
 
+    useEffect(() => {
+        fetchReviews();
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://pwi-project-server.vercel.app/api/reviews', {
+            const response = await fetch('https://cors-anywhere.herokuapp.com/https://pwi-project-server.vercel.app/api/reviews', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,6 +53,7 @@ const Review = () => {
             console.error('Fetch error:', error);
         }
     };
+
 
 
     return (
