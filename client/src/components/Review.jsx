@@ -12,39 +12,44 @@ const Review = () => {
     const [successMessage, setSuccessMessage] = useState('');
 
     const fetchReviews = async () => {
-        const response = await fetch(`https://pwi-project-server.vercel.app/api/reviews`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        try {
+            const response = await fetch('https://pwi-project-server.vercel.app/api/reviews');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const reviewsList = await response.json();
+            setReviews(reviewsList);
+        } catch (error) {
+            console.error('Fetch error:', error);
         }
-        const reviewsList = await response.json();
-        setReviews(reviewsList);
     };
-
-    useEffect(() => {
-        fetchReviews();
-    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`https://pwi-project-server.vercel.app/api/reviews`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, email, message }),
-        });
+        try {
+            const response = await fetch('https://pwi-project-server.vercel.app/api/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message }),
+            });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            setName('');
+            setEmail('');
+            setMessage('');
+            setSuccessMessage(t('Review.review_added_successfully'));
+
+            fetchReviews();
+        } catch (error) {
+            console.error('Fetch error:', error);
         }
-
-        setName('');
-        setEmail('');
-        setMessage('');
-        setSuccessMessage(t('Review.review_added_successfully'));
-
-        fetchReviews();
     };
+
 
     return (
         <section id="reviews" className={`flex flex-col ${styles.paddingY}`}>
@@ -120,6 +125,7 @@ const Review = () => {
                 </div>
             </div>
         </section>
+
     );
 };
 

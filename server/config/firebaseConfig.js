@@ -5,10 +5,11 @@ require('dotenv').config();
 
 const app = express();
 
-// Konfiguracja CORS
 app.use(cors({
-  origin: 'https://pwi-project-client.vercel.app', 
+  origin: 'https://pwi-project-client.vercel.app',
 }));
+
+app.use(express.json());
 
 const serviceAccount = {
   type: "service_account",
@@ -30,12 +31,21 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// Przykładowa trasa API
 app.get('/api/reviews', async (req, res) => {
   try {
     const reviews = await db.collection('reviews').get();
     const reviewsData = reviews.docs.map(doc => doc.data());
     res.json(reviewsData);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+app.post('/api/reviews', async (req, res) => {
+  const { name, email, message } = req.body;
+  try {
+    await db.collection('reviews').add({ name, email, message });
+    res.status(201).send('Review added successfully');
   } catch (error) {
     res.status(500).send(error.message);
   }
