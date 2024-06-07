@@ -5,6 +5,15 @@ export const navLinks = [
     id: "home",
     title: "home", 
   },
+  {
+    id: "contact",
+    title: "contact", 
+  },
+  {
+    id: "reviews",
+    title: "reviews", 
+  },
+
 ];
 
 export const footerLinks = [

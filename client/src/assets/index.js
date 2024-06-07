@@ -1,4 +1,5 @@
 import logo from "./logo.png";
+import form from "./form.png";
 import myphoto from "./my-photo.jpg";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -11,6 +12,7 @@ import twitter from "./twitter.svg";
 
 export {
   logo,
+  form,
   myphoto,
   menu,
   close,

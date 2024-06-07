@@ -31,9 +31,10 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <div className="sm:flex flex-1 justify-end items-center text-white">
-        <button onClick={() => changeLanguage('en')}>EN</button>
-        <button onClick={() => changeLanguage('pl')}>PL</button>
+      <div className="sm:flex flex-1 justify-end items-center text-xl text-white">
+        <button className="px-1" onClick={() => changeLanguage('en')}> EN </button>
+        /
+        <button className="px-1" onClick={() => changeLanguage('pl')}> PL </button>
       </div>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -47,7 +48,7 @@ const Navbar = () => {
         <div
           className={`${
             !toggle ? "hidden" : "flex"
-          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+          } p-6 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl`}
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
             {navLinks.map((nav, index) => (
