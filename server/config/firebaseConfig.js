@@ -1,5 +1,12 @@
+const express = require('express');
+const cors = require('cors');
 const admin = require('firebase-admin');
 require('dotenv').config();
+
+const app = express();
+
+// Use the cors middleware
+app.use(cors());
 
 const serviceAccount = {
   type: "service_account",
@@ -20,5 +27,21 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+
+app.get('/api/reviews', async (req, res) => {
+  try {
+    const reviews = await db.collection('reviews').get();
+    const reviewsData = reviews.docs.map(doc => doc.data());
+    res.json(reviewsData);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 module.exports = { db };
