@@ -59,10 +59,4 @@ app.post('/api/reviews', async (req, res) => {
   }
 });
 
-// Uruchom serwer
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
 module.exports = { db };
