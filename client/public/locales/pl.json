@@ -18,5 +18,9 @@
     "reviews": "Opinie",
     "review_added_successfully": "Opinia została dodana pomyślnie!",
     "no_reviews_yet": "Brak opinii."
+  },
+  "Projects": {
+    "title": "Projekty",
+    "view_on_github": "Zobacz na GitHub"
   }
 }
