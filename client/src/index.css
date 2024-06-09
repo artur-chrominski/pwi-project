@@ -21,4 +21,35 @@
   background: linear-gradient(180deg, rgba(253,167,1,1) 0%, rgba(254,241,184,1) 60%, rgba(255,255,255,0) 100%);
 }
 
+.bg-yellow-gradient {
+  background: linear-gradient(
+    157.81deg,
+    #f4d983 -43.27%,
+    #f2d16a -21.24%,
+    #f0c952 12.19%,
+    #eec239 29.82%,
+    #ecba20 51.94%,
+    #eab308 90.29%
+  );
+}
 
+.hover\:bg-gradient-to-l:hover {
+    background: linear-gradient(to left, #f4d983 -43.27%, #f2d16a -21.24%, #f0c952 12.19%, #eec239 29.82%, #ecba20 51.94%, #eab308 90.29%);
+}
+
+.bg-white-gradient {
+  background: linear-gradient(180deg, rgba(253,167,1,1) 0%, rgba(254,241,184,1) 60%, rgba(255,255,255,0) 100%);
+}
+
+
+.bg-white {
+  background: #ffffff;
+}
+
+.bg-gray-gradient {
+background: linear-gradient(180deg, rgba(253, 167, 1, 0.2) 0%, rgba(254, 241, 184, 0.2) 60%, rgba(255, 255, 255, 0) 100%);
+}
+
+.hover\:bg-gray-gradient:hover {
+  background: linear-gradient(180deg, rgba(253, 167, 1, 1) 0%, rgba(254, 241, 184, 1) 60%, rgba(255, 255, 255, 0) 100%);
+}

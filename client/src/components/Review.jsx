@@ -10,6 +10,7 @@ const Review = () => {
     const [message, setMessage] = useState('');
     const [reviews, setReviews] = useState([]);
     const [successMessage, setSuccessMessage] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
     const fetchReviews = async () => {
         try {
@@ -49,6 +50,7 @@ const Review = () => {
             setEmail('');
             setMessage('');
             setSuccessMessage(t('Review.review_added_successfully'));
+            setShowModal(true);
 
             // Dodaj nową recenzję do stanu bez potrzeby ponownego ładowania wszystkich recenzji
             setReviews([...reviews, newReview]);
@@ -56,6 +58,11 @@ const Review = () => {
         } catch (error) {
             console.error('Fetch error:', error);
         }
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setSuccessMessage('');
     };
 
     return (
@@ -125,12 +132,23 @@ const Review = () => {
                             </div>
                             <button type="submit" className="bg-secondary text-white p-4 px-8 rounded-lg hover:bg-yellow-300 transition-colors duration-300">{t('Review.submit')}</button>
                         </form>
-                        {successMessage && (
-                            <p className="text-green-500 text-lg mt-4">{successMessage}</p>
-                        )}
                     </div>
                 </div>
             </div>
+
+            {showModal && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
+                        <p className="text-black text-lg mb-4">{successMessage}</p>
+                        <button
+                            onClick={handleCloseModal}
+                            className="bg-secondary text-white p-4 px-8 rounded-lg hover:bg-yellow-300 transition-colors duration-300"
+                        >
+                            Zamknij
+                        </button>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

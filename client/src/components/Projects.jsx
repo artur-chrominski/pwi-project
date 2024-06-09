@@ -58,12 +58,12 @@ const Projects = () => {
                 <h2 className="text-white text-center text-5xl mb-12">{t('Projects.title')}</h2>
                 <Slider {...settings}>
                     {projects.map((project, index) => (
-                        <div key={index} className="p-6">
-                            <div className="rounded-lg shadow-md bg-blue-gradient hover:bg-gradient-to-l hover:from-blue-600 hover:via-blue-500 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-xl min-h-[220px]">
-                                <img src={githubLogo} alt="GitHub Logo" className="w-12 h-12 mb-4" />
-                                <h3 className="text-white text-2xl mb-4">{project.title}</h3>
-                                <p className="text-white text-lg mb-4">{project.description}</p>
-                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-yellow-300 underline">
+                        <div key={index} className="p-6 flex justify-center">
+                            <div className="p-8 rounded-lg shadow-md bg-white hover:bg-gray-gradient transition-all duration-300 transform hover:scale-105 hover:shadow-xl min-h-[240px] flex flex-col items-center">
+                                <img src={githubLogo} alt="GitHub Logo" className="w-16 h-16 mb-4" />
+                                <h3 className="text-black text-3xl mb-4 text-center">{project.title}</h3>
+                                <p className="text-black text-lg mb-4 text-center">{project.description}</p>
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-yellow-500 underline hover:text-yellow-700">
                                     {t('Projects.view_on_github')}
                                 </a>
                             </div>
