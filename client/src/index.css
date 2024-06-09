@@ -53,10 +53,3 @@ background: linear-gradient(180deg, rgba(253, 167, 1, 0.2) 0%, rgba(254, 241, 18
 .hover\:bg-gray-gradient:hover {
   background: linear-gradient(180deg, rgba(253, 167, 1, 1) 0%, rgba(254, 241, 184, 1) 60%, rgba(255, 255, 255, 0) 100%);
 }
-.slick-list.dragging {
-  cursor: default !important; 
-}
-
-.slick-slide.dragging img {
-  pointer-events: auto !important; 
-}
