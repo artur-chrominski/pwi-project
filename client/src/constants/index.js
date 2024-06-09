@@ -18,11 +18,19 @@ export const navLinks = [
 
 export const footerLinks = [
   {
-    title: "lorem", 
+    title: "Więcej linków", 
     links: [
       {
-        name: "lorem", 
-        link: "#",
+        name: "O nas", 
+        link: "#home",
+      },
+      {
+        name: "Opinie", 
+        link: "#reviews",
+      },
+      {
+        name: "Kontakt", 
+        link: "#contact",
       },
     ],
   },

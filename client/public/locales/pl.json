@@ -3,7 +3,7 @@
   "about": "O nas",
   "contact": "Kontakt",
   "reviews": "Opinie",
-  "lorem": "Lorem",
+  "lorem": "O nas",
   "hero": {
     "name": "Artur",
     "surname": "Chromiński",
@@ -22,5 +22,8 @@
   "Projects": {
     "title": "Projekty",
     "view_on_github": "Zobacz na GitHub"
+  },
+  "footer": {
+    "text": "Zapraszam do kontaktu za pośrednictem moich social mediów"
   }
 }

@@ -12,45 +12,27 @@ export {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  const slickList = document.querySelector('.slick-list');
-  const slickSlides = document.querySelectorAll('.slick-slide img');
-
-  if (slickList) {
-      slickList.classList.remove('dragging');
-      slickList.style.cursor = ''; 
-  }
-
-  slickSlides.forEach(slide => {
-      slide.classList.remove('dragging');
-      slide.style.pointerEvents = ''; 
-  });
-});
-document.addEventListener('DOMContentLoaded', () => {
   const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
-          if (mutation.type === 'attributes') {
-              if (mutation.target.classList.contains('dragging')) {
-                  mutation.target.classList.remove('dragging');
-                  if (mutation.target.classList.contains('slick-list')) {
-                      mutation.target.style.cursor = ''; 
-                  }
-                  if (mutation.target.tagName === 'IMG' && mutation.target.closest('.slick-slide')) {
-                      mutation.target.style.pointerEvents = ''; 
-                  }
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+              const target = mutation.target;
+              if (target.classList.contains('slick-list') && target.classList.contains('dragging')) {
+                  target.classList.remove('dragging');
+                  target.style.cursor = 'default'; // Nadpisuje kursor
+              }
+              if (target.tagName === 'IMG' && target.classList.contains('dragging')) {
+                  target.classList.remove('dragging');
+                  target.style.pointerEvents = 'auto'; // Nadpisuje pointer-events
               }
           }
       });
   });
 
-  const config = { attributes: true, subtree: true };
+  const config = { attributes: true, subtree: true, attributeFilter: ['class'] };
 
-  const slickList = document.querySelector('.slick-list');
-  if (slickList) {
-      observer.observe(slickList, config);
-  }
+  const slickLists = document.querySelectorAll('.slick-list');
+  slickLists.forEach(list => observer.observe(list, config));
 
-  const slickSlides = document.querySelectorAll('.slick-slide img');
-  slickSlides.forEach(slide => {
-      observer.observe(slide, config);
-  });
+  const slickSlideImages = document.querySelectorAll('.slick-slide img');
+  slickSlideImages.forEach(image => observer.observe(image, config));
 });
