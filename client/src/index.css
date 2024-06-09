@@ -54,9 +54,9 @@ background: linear-gradient(180deg, rgba(253, 167, 1, 0.2) 0%, rgba(254, 241, 18
   background: linear-gradient(180deg, rgba(253, 167, 1, 1) 0%, rgba(254, 241, 184, 1) 60%, rgba(255, 255, 255, 0) 100%);
 }
 .slick-list.dragging {
-  cursor: pointer !important;
+  cursor: pointer;
 }
 
 .slick-slide.dragging img {
-  pointer-events: none !important;
+  pointer-events: none;
 }
