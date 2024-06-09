@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import { useTranslation } from 'react-i18next';
 import styles from "../style";
-import githubLogo from "../assets/github-logo.png";
+import githubLogo from "../assets/github-logo.webp";
 
 const Projects = () => {
     const { t } = useTranslation();

@@ -13,28 +13,44 @@ export {
 
 document.addEventListener('DOMContentLoaded', () => {
   const slickList = document.querySelector('.slick-list');
-  const slickSlideImage = document.querySelector('.slick-slide img');
+  const slickSlides = document.querySelectorAll('.slick-slide img');
 
   if (slickList) {
-      slickList.addEventListener('dragstart', () => {
-          slickList.style.cursor = 'pointer';
-      });
-
-      slickList.addEventListener('dragend', () => {
-          slickList.style.cursor = 'default';
-      });
+      slickList.classList.remove('dragging');
+      slickList.style.cursor = ''; 
   }
 
-  if (slickSlideImage) {
-      const setDraggingStyle = () => {
-          slickSlideImage.style.pointerEvents = 'none';
-      };
+  slickSlides.forEach(slide => {
+      slide.classList.remove('dragging');
+      slide.style.pointerEvents = ''; 
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+          if (mutation.type === 'attributes') {
+              if (mutation.target.classList.contains('dragging')) {
+                  mutation.target.classList.remove('dragging');
+                  if (mutation.target.classList.contains('slick-list')) {
+                      mutation.target.style.cursor = ''; 
+                  }
+                  if (mutation.target.tagName === 'IMG' && mutation.target.closest('.slick-slide')) {
+                      mutation.target.style.pointerEvents = ''; 
+                  }
+              }
+          }
+      });
+  });
 
-      const resetDraggingStyle = () => {
-          slickSlideImage.style.pointerEvents = 'auto';
-      };
+  const config = { attributes: true, subtree: true };
 
-      slickSlideImage.addEventListener('dragstart', setDraggingStyle);
-      slickSlideImage.addEventListener('dragend', resetDraggingStyle);
+  const slickList = document.querySelector('.slick-list');
+  if (slickList) {
+      observer.observe(slickList, config);
   }
+
+  const slickSlides = document.querySelectorAll('.slick-slide img');
+  slickSlides.forEach(slide => {
+      observer.observe(slide, config);
+  });
 });
