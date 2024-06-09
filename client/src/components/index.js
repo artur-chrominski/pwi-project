@@ -10,3 +10,31 @@ export {
   Footer,
   Hero,
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  const slickList = document.querySelector('.slick-list');
+  const slickSlideImage = document.querySelector('.slick-slide img');
+
+  if (slickList) {
+      slickList.addEventListener('dragstart', () => {
+          slickList.style.cursor = 'pointer';
+      });
+
+      slickList.addEventListener('dragend', () => {
+          slickList.style.cursor = 'default';
+      });
+  }
+
+  if (slickSlideImage) {
+      const setDraggingStyle = () => {
+          slickSlideImage.style.pointerEvents = 'none';
+      };
+
+      const resetDraggingStyle = () => {
+          slickSlideImage.style.pointerEvents = 'auto';
+      };
+
+      slickSlideImage.addEventListener('dragstart', setDraggingStyle);
+      slickSlideImage.addEventListener('dragend', resetDraggingStyle);
+  }
+});
