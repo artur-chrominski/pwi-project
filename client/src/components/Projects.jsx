@@ -53,7 +53,7 @@ const Projects = () => {
     };
 
     return (
-        <section id="projects" className={`flex flex-col ${styles.paddingY}`}>
+        <section id="projects-github" className={`flex flex-col ${styles.paddingY}`}>
             <div className="my-8 lg:my-12">
                 <h2 className="text-white text-center text-5xl mb-12">{t('Projects.title')}</h2>
                 <Slider {...settings}>

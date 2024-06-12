@@ -4,6 +4,8 @@
   "contact": "Contact",
   "reviews": "Reviews",
   "lorem": "Home",
+  "gallery-realization": "Realization Gallery",
+  "projects-github": "Projects",
   "hero": {
     "name": "Artur",
     "surname": "Chromiński",
@@ -25,5 +27,17 @@
   },
   "footer": {
     "text": "Feel free to contact me through my social media"
+  },
+  "gallery": {
+    "title": "Realization Gallery"
+  },
+  "technologies": {
+    "title": "Technologies We Use",
+    "description": "At our company, we leverage a diverse set of technologies to deliver cutting-edge solutions. From backend development with PHP and Java, to building dynamic web applications with React and Angular, and styling them with Tailwind CSS. For server-side rendering and static site generation, we use Next.js."
+  },
+  "infoBlock": {
+    "title": "Discover Our Exceptional Services!",
+    "description": "We offer a wide range of solutions tailored to meet your needs. From innovative tech development to seamless payment processing, we help you take your business to the next level. Our expert team is dedicated to providing personalized support to ensure your success. Whether you're a startup or an established enterprise, we have the tools and experience to help you grow. Contact us today and let's grow together!",
+    "buttonText": "Call Us Now"
   }
 }

@@ -15,9 +15,11 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img src={logo} alt="hoobank" className="w-[160px] h-[145px]" />
+      <div className="flex justify-start items-center">
+        <img src={logo} alt="hoobank" className="w-[160px] h-[145px]" />
+      </div>
 
-      <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+      <ul className="list-none sm:flex hidden justify-center items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
@@ -31,10 +33,10 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <div className="sm:flex flex-1 justify-end items-center text-xl text-white">
-        <button className="px-1" onClick={() => changeLanguage('en')}> EN </button>
-        /
-        <button className="px-1" onClick={() => changeLanguage('pl')}> PL </button>
+      <div className="sm:flex hidden justify-end items-center text-xl text-white">
+        <button className="px-2" onClick={() => changeLanguage('en')}>EN</button>
+        <span className="px-1">/</span>
+        <button className="px-2" onClick={() => changeLanguage('pl')}>PL</button>
       </div>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -48,7 +50,7 @@ const Navbar = () => {
         <div
           className={`${
             !toggle ? "hidden" : "flex"
-          } p-6 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl`}
+          } p-6 absolute top-28 right-0 mx-4 my-2 min-w-[140px] rounded-xl border-solid border-2 bg-[#eab308] border-[#eab308]`}
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
             {navLinks.map((nav, index) => (
@@ -57,7 +59,10 @@ const Navbar = () => {
                 className={`font-medium cursor-pointer text-[16px] ${
                   active === nav.title ? "text-white" : "text-dimWhite"
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                onClick={() => setActive(nav.title)}
+                onClick={() => {
+                  setActive(nav.title);
+                  setToggle(false); 
+                }}
               >
                 <a href={`#${nav.id}`}>{t(nav.title)}</a>
               </li>

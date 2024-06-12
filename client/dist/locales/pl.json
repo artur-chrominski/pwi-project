@@ -4,6 +4,8 @@
   "contact": "Kontakt",
   "reviews": "Opinie",
   "lorem": "O nas",
+  "gallery-realization": "Galeria Realizacji",
+  "projects-github": "Projekty",
   "hero": {
     "name": "Artur",
     "surname": "Chromiński",
@@ -25,5 +27,17 @@
   },
   "footer": {
     "text": "Zapraszam do kontaktu za pośrednictem moich social mediów"
+  },
+  "gallery": {
+    "title": "Galeria Realizacji"
+  },
+  "technologies": {
+    "title": "Technologie, których używam",
+    "description": "W naszej firmie wykorzystuje różnorodne technologie, aby dostarczać nowoczesne rozwiązania. Od tworzenia backendu z PHP i Java, przez budowanie dynamicznych aplikacji internetowych za pomocą React i Angular, po stylizację z Tailwind CSS. Do renderowania po stronie serwera i generowania statycznych stron używamy Next.js."
+  },
+  "infoBlock": {
+    "title": "Odkryj nasze wyjątkowe usługi!",
+    "description": "Oferujemy szeroką gamę rozwiązań dostosowanych do Twoich potrzeb. Od innowacyjnego rozwoju technologii po bezproblemowe przetwarzanie płatności, pomagamy przenieść Twoją firmę na wyższy poziom. Nasz zespół ekspertów jest zaangażowany w zapewnienie spersonalizowanego wsparcia, aby zapewnić Twój sukces. Niezależnie od tego, czy jesteś startupem, czy ugruntowaną firmą, mamy narzędzia i doświadczenie, aby pomóc Ci rosnąć. Skontaktuj się z nami już dziś i rośnijmy razem!",
+    "buttonText": "Zadzwoń teraz"
   }
 }

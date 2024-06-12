@@ -13,7 +13,14 @@ export const navLinks = [
     id: "reviews",
     title: "reviews", 
   },
-
+  {
+    id: "gallery-realization",
+    title: "gallery-realization", 
+  },
+  {
+    id: "projects-github",
+    title: "projects-github", 
+  },
 ];
 
 export const footerLinks = [
@@ -27,6 +34,14 @@ export const footerLinks = [
       {
         name: "Opinie", 
         link: "#reviews",
+      },
+      {
+        name: "Galeria Realizacji", 
+        link: "#contact",
+      },
+      {
+        name: "Projekty", 
+        link: "#contact",
       },
       {
         name: "Kontakt", 
