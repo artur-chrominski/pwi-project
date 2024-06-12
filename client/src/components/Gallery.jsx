@@ -3,17 +3,23 @@ import styles from "../style";
 import { useTranslation } from 'react-i18next';
 import Modal from 'react-modal';
 
+import galleryImage1 from '../assets/galleryimage1.jpeg';
+import galleryImage2 from '../assets/galleryimage2.png';
+import galleryImage3 from '../assets/galleryimage3.webp';
+import galleryImage4 from '../assets/galleryimage4.avif';
+import galleryImage5 from '../assets/galleryimage5.webp';
+
 const Gallery = () => {
   const { t } = useTranslation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
-    'src/assets/galleryimage1.jpeg',
-    'src/assets/galleryimage2.png',
-    'src/assets/galleryimage3.webp',
-    'src/assets/galleryimage4.avif',
-    'src/assets/galleryimage5.webp',
+    galleryImage1,
+    galleryImage2,
+    galleryImage3,
+    galleryImage4,
+    galleryImage5,
   ];
 
   const openModal = (src) => {
